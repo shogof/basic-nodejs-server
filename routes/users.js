@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 let users = [
-  { id: 1, name: "Alice" },
-  { id: 2, name: "Bob" },
+  { id: 1, name: "Laila" },
+  { id: 2, name: "Ahmad" },
 ];
 
 router.get("/", (req, res) => {

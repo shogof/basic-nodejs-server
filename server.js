@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const path = require("path");
 const usersRoute = require("./routes/users");
 const productsRoute = require("./routes/products");
 
@@ -15,7 +16,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/index.html");
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.use("/users", usersRoute);
@@ -27,7 +28,7 @@ app.use((err, req, res, next) => {
 });
 
 app.use((req, res) => {
-  res.status(404).json({ error: "Route not found" });
+  res.status(404).sendFile(path.join(__dirname, "public", "404.html"));
 });
 
 app.listen(PORT, () => {
