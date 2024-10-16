@@ -2,11 +2,18 @@ const express = require("express");
 const router = express.Router();
 
 let users = [
-  { id: 1, name: "Hasti" },
-  { id: 2, name: "Niloofar" },
+  { id: 1, name: "Alice" },
+  { id: 2, name: "Bob" },
 ];
 
 router.get("/", (req, res) => {
+  const name = req.query.name;
+  if (name) {
+    const filteredUsers = users.filter((user) =>
+      user.name.toLowerCase().includes(name.toLowerCase())
+    );
+    return res.json(filteredUsers);
+  }
   res.json(users);
 });
 
@@ -20,7 +27,9 @@ router.post("/", (req, res) => {
 router.put("/:id", (req, res) => {
   const userId = parseInt(req.params.id);
   const updatedUser = req.body;
-  users = users.map((user) => (user.id === userId ? { ...user, ...updatedUser } : user));
+  users = users.map((user) =>
+    user.id === userId ? { ...user, ...updatedUser } : user
+  );
   res.json(updatedUser);
 });
 
