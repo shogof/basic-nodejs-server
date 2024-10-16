@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Node.js Server</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to My Node.js Server</h1>
+    </header>
+    <div class="container">
+      <p>This server is built using Node.js and Express.js.</p>
+      <h2>Project Features</h2>
+      <ul>
+        <li>
+          Static Homepage:
+          <ul>
+            <li>Serves a static HTML file as the homepage.</li>
+          </ul>
+        </li>
+        <li>
+          CRUD Operations:
+          <ul>
+            <li>Manage Users and Products:</li>
+            <li><code>GET /users</code> - Retrieve all users.</li>
+            <li><code>POST /users</code> - Create a new user.</li>
+            <li><code>PUT /users/:id</code> - Update user details.</li>
+            <li><code>DELETE /users/:id</code> - Delete a user.</li>
+            <li><code>GET /products</code> - Retrieve all products.</li>
+            <li><code>POST /products</code> - Create a new product.</li>
+            <li><code>PUT /products/:id</code> - Update product details.</li>
+            <li><code>DELETE /products/:id</code> - Delete a product.</li>
+          </ul>
+        </li>
+        <li>
+          Static Assets:
+          <ul>
+            <li>Serves CSS and JavaScript files from the public directory.</li>
+          </ul>
+        </li>
+        <li>
+          Data Handling:
+          <ul>
+            <li>
+              Handles JSON data in request bodies for POST and PUT requests.
+            </li>
+          </ul>
+        </li>
+        <li>
+          Routing:
+          <ul>
+            <li>Organizes routes using Express Router.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <footer>
+      <p>
+        &copy; 2024 My Node.js Server
+      </p>
+    </footer>
+  </body>
+</html>
