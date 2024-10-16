@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 let products = [
-  { id: 1, name: "Product A" },
-  { id: 2, name: "Product B" },
+  { id: 1, name: "Product A:)" },
+  { id: 2, name: "Product B:(" },
 ];
 
 router.get("/", (req, res) => {
