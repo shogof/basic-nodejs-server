@@ -7,7 +7,6 @@ const app = express();
 const PORT = 3000;
 
 app.use(bodyParser.json());
-
 app.use(express.static("public"));
 
 app.use((req, res, next) => {

@@ -27,15 +27,25 @@ router.post("/", (req, res) => {
 router.put("/:id", (req, res) => {
   const userId = parseInt(req.params.id);
   const updatedUser = req.body;
-  users = users.map((user) =>
-    user.id === userId ? { ...user, ...updatedUser } : user
-  );
-  res.json(updatedUser);
+  const userIndex = users.findIndex((user) => user.id === userId);
+
+  if (userIndex === -1) {
+    return res.status(404).json({ error: "User not found" });
+  }
+
+  users[userIndex] = { ...users[userIndex], ...updatedUser };
+  res.json(users[userIndex]);
 });
 
 router.delete("/:id", (req, res) => {
   const userId = parseInt(req.params.id);
-  users = users.filter((user) => user.id !== userId);
+  const userIndex = users.findIndex((user) => user.id === userId);
+
+  if (userIndex === -1) {
+    return res.status(404).json({ error: "User not found" });
+  }
+
+  users.splice(userIndex, 1);
   res.json({ message: "User deleted" });
 });
 

@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
   const newProduct = req.body;
-  newProduct.id = products.length + 1; // Assign a new ID
+  newProduct.id = products.length + 1;
   products.push(newProduct);
   res.status(201).json(newProduct);
 });
@@ -20,15 +20,29 @@ router.post("/", (req, res) => {
 router.put("/:id", (req, res) => {
   const productId = parseInt(req.params.id);
   const updatedProduct = req.body;
-  products = products.map((product) =>
-    product.id === productId ? { ...product, ...updatedProduct } : product
+  const productIndex = products.findIndex(
+    (product) => product.id === productId
   );
-  res.json(updatedProduct);
+
+  if (productIndex === -1) {
+    return res.status(404).json({ error: "Product not found" });
+  }
+
+  products[productIndex] = { ...products[productIndex], ...updatedProduct };
+  res.json(products[productIndex]);
 });
 
 router.delete("/:id", (req, res) => {
   const productId = parseInt(req.params.id);
-  products = products.filter((product) => product.id !== productId);
+  const productIndex = products.findIndex(
+    (product) => product.id === productId
+  );
+
+  if (productIndex === -1) {
+    return res.status(404).json({ error: "Product not found" });
+  }
+
+  products.splice(productIndex, 1);
   res.json({ message: "Product deleted" });
 });
 
